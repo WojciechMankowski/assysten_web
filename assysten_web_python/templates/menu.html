@@ -1,0 +1,33 @@
+<nav class="menu">
+    <div class="container collapside">
+        <i class="menu_icon fa-solid fa-bars"></i>
+        <ul class="menu_items collapside_content">
+            <li class="menu_item">
+                <a href="{{url_for('index')}}" class='menu_link'>
+                    Strona główna
+                </a>
+            </li>
+            {% if name %}
+            <li class="menu_item">
+                <a href="{{url_for('accounts.logout')}}" class='menu_link'>
+                    Wyloguj się
+                </a>
+            </li>
+            {% else %}
+            <li class="menu_item">
+                <a href="{{url_for('accounts.login')}}" class='menu_link'>
+                    Logowanie
+                </a>
+            </li>
+            <li class="menu_item">
+                <a href="{{url_for('accounts.register')}}" class='menu_link'>
+                    Rejestracja
+                </a>
+            </li>
+            {% endif %}
+
+
+            </li>
+        </ul>
+    </div>
+</nav>
