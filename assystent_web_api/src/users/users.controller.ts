@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { User } from './user';
+import { User as UserModel } from '@prisma/client';
+import { UserType } from './user';
 
 @Controller('users')
 export class UsersController {
@@ -13,11 +14,18 @@ export class UsersController {
 
   @Get('/:id')
   async find(@Param('id') id: number) {
-    return this.usersService.find(id);
+    return this.usersService.find({ id: Number(id) });
   }
 
-  @Post('addUser/:user')
-  addUser(@Body() user: User) {
-    return this.usersService.create(user);
+  @Post()
+  addUser(@Body() userData: UserType): Promise<UserModel> {
+    console.log(`userData: ${userData.username} ${userData.email}  ${userData.password}
+    `);
+    //   {
+    //     "username":"Wojtek",
+    //     "email":"wojtekm510@gmail.com",
+    //     "password":"Wojtek"
+    //  }'
+    return this.usersService.create(userData);
   }
 }

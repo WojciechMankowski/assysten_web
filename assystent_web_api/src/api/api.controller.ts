@@ -1,10 +1,9 @@
-/* eslint-disable prefer-const */
 import { Controller, Get, Param } from '@nestjs/common';
 import { ApiService } from './api.service';
 import { Weather } from './weather';
 import { WikipadiaData } from './wikipedia';
-let wiki;
-wiki = require('wikipedia');
+// eslint-disable-next-line prefer-const, @typescript-eslint/no-var-requires
+let wiki = require('wikipedia');
 
 @Controller('api')
 export class ApiController {
@@ -26,6 +25,7 @@ export class ApiController {
       icon: data_json.weather[0].icon,
       winter: data_json.wind,
     };
+    // eslint-disable-next-line prefer-const
     data = { ...data_weathers };
     return data;
   }
@@ -47,7 +47,7 @@ export class ApiController {
   async wiki(@Param('word') word: string) {
     const newUrl = await wiki.setLang('pl');
     const summary = await wiki.summary(word);
-    let data: WikipadiaData = {
+    const data: WikipadiaData = {
       title: summary.title,
       url: summary.content_urls.desktop.page,
       extract: summary.extract,
