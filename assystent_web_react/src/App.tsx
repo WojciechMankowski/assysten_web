@@ -8,7 +8,7 @@ import "./CSS/style.css"
 function App() {
 	return (
 		<Router>
-				<Menu user="wojtek" />
+				<Menu user="" />
 
 			<Routes>
 				<Route path="/" element=<Home /> />
