@@ -12,20 +12,16 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Get('/:id')
-  async find(@Param('id') id: number) {
-    return this.usersService.find({ id: Number(id) });
+  @Get('/:name')
+  async find(@Param('name') name: string) {
+    const user = await this.usersService.find(name);
+    console.log(user);
+    const data = user != null ? user : [];
+    return data;
   }
 
   @Post()
   addUser(@Body() userData: UserType): Promise<UserModel> {
-    console.log(`userData: ${userData.username} ${userData.email}  ${userData.password}
-    `);
-    //   {
-    //     "username":"Wojtek",
-    //     "email":"wojtekm510@gmail.com",
-    //     "password":"Wojtek"
-    //  }'
     return this.usersService.create(userData);
   }
 }

@@ -1,56 +1,59 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.css"
-
+import User from "../types/user"
+import "../CSS/menu.css"
+import { useState } from "react"
 interface Props {
-	user: string
+	user: User
 }
+type hamburgerType = Element | null
 const Menu = ({ user }: Props) => {
 	let menu_html
 
+	const handleClick = () => {
+		const hamburger: hamburgerType = document.querySelector(".hamburger")
+		const nav = document.querySelector('.navigation')
+		hamburger!.classList.toggle('hamburger--active');
+		nav!.classList.toggle('navigation--active');
+	}
+
 	menu_html =
-		user !== ""
+		user.username !== ""
 			? [
-					<li className="menu_item nav-item" key={"home"}>
-						<Link to="/" className="nav-link text-white">
+					<li className="menu_item" key={"home"}>
+						<Link to="/" className=" navigation__item">
 							Strona główna
 						</Link>
 					</li>,
-					<li className="menu_item nav-item" key={"logout"}>
-						<Link to="/logout" className="nav-link text-white">
+					<li className="menu_item" key={"logout"}>
+						<Link to="/logout" className=" navigation__item">
 							Wyloguj się
 						</Link>
 					</li>,
 			  ]
 			: [
-					<li className="menu_item nav-item" key={"reg"}>
-						<Link to="/registration" className="nav-link text-white">
+					<li className="menu_item" key={"reg"}>
+						<Link to="/registration" className=" navigation__item">
 							Rejestracja
 						</Link>
 					</li>,
-					<li className="menu_item nav-item" key={"login"}>
-						<Link to="/login" className="nav-link text-white">
+					<li className="menu_item" key={"login"}>
+						<Link to="/login" className=" navigation__item">
 							Zaloguj się
 						</Link>
 					</li>,
 			  ]
 
 	return (
-		<nav className="navbar navbar-expand-lg ">
-			<div className="container-fluid">
-				<button
-					className="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span className="navbar-toggler-icon"></span>
-				</button>
-				<div className="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul className="navbar-nav me-auto mb-2 mb-lg-0">{menu_html}</ul>
-				</div>
+		<nav className="navbar">
+			<button className="hamburger" onClick={handleClick}>
+				<span className="hamburger__box">
+					<span className="hamburger__inner"></span>
+				</span>
+			</button>
+			<div className="navigation" id="navbarSupportedContent">
+				<ul className="navigation__list">{menu_html}</ul>
 			</div>
 		</nav>
 	)

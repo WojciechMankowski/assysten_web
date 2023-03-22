@@ -17,10 +17,13 @@ export class UsersService {
     return this.prisma.user.findMany();
   }
 
-  find(userWhereUniqueInput: Prisma.UserWhereUniqueInput) {
-    return this.prisma.user.findUnique({
-      where: userWhereUniqueInput,
+  find(name: string) {
+    const user = this.prisma.user.findFirst({
+      where: {
+        username: name,
+      },
     });
+    return user;
   }
 
   create(data: Prisma.UserCreateInput) {
