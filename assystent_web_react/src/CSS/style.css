@@ -17,11 +17,13 @@ body {
 	width: 100%;
 	margin-top: 0.5em;
 }
-
+.main{
+	margin: 0 auto;
+}
 .screen {
 	min-height: 70vh;
 	height: auto;
-	width: 80%;
+	/* width: 80%; */
 	background: #9194a1;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
@@ -29,7 +31,7 @@ body {
 }
 .fields {
 	height: 20vh;
-	width: 80%;
+	/* width: 80%; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -38,6 +40,7 @@ body {
 	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;
 	padding: 0.5em 0.5em;
+	margin-bottom: 20px;
 }
 .comend_input {
 	width: 60%;
@@ -101,8 +104,9 @@ body {
 }
 .temp {
 	order: 1;
-	font-size: 1rem;
+	font-size: 80px;
 	width: 25%;
+	margin: 0.5em 1em;
 	text-align: center;
 }
 .temp_max {
@@ -123,8 +127,14 @@ body {
 	text-align: left;
 }
 
-.container {
-	max-width: 1140px;
+/* .container {
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+} */
+.home_screen{
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -157,6 +167,7 @@ body {
 	border-radius: 10px;
 	text-transform: uppercase;
 }
+
 #submit:hover {
 	background-color: rgba(223, 0, 0, 0.8);
 }
