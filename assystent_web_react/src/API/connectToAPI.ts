@@ -19,3 +19,13 @@ export const connectToAPIOpen = (word: string, setData: setDataType) => {
 			setData({ ...res })
 		})
 }
+
+export const connectToAPIwWikipedia= (word: string, setData: setDataType) => {
+	const url = `${URL_API}api/wikipedia/${word}`
+	fetch(url)
+		.then(res => res.json())
+		.then(res => {
+			console.log(res)
+			setData({ ...res })
+		})
+}
