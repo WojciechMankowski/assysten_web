@@ -18,7 +18,7 @@ const Login = ({ setUser, user }: LoginProps) => {
 		<form className="login" autoComplete="off">
 			<Label text="Nazwa uzytkownika: " id="username" />
 			<Input type="text" id="username" onChange={setUserName} value={userName}/>
-			<Label text="Nazwa uzytkownika: " id="password" />
+			<Label text="Hasło: " id="password" />
 			<Input type="password" id="password" onChange={setPasworrd} value={password}/>
 			<Button type="button" text="Zaloguj się" function={login} />
 		</form>
