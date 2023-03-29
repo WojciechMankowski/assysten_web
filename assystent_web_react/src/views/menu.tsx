@@ -10,7 +10,7 @@ interface Props {
 type hamburgerType = Element | null
 const Menu = ({ user }: Props) => {
 	let menu_html
-
+	console.log(user.username);
 	const handleClick = () => {
 		const hamburger: hamburgerType = document.querySelector(".hamburger")
 		const nav = document.querySelector('.navigation')
